@@ -17,6 +17,8 @@ var notificationRequestSchema = new Schema({
   },
 });
 
+// TODO: make sure the jobID is unique, no duplicate notifications
+
 var notificationSchema = new Schema({
   userID: {
     type: mongoose.Schema.Types.ObjectId,
