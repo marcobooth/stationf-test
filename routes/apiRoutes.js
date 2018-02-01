@@ -3,6 +3,38 @@ var Job = require('mongoose').model('Job')
 var requireLogin = require('../middlewares/requireLogin')
 
 var apiRoutes = function(app) {
+  //TODO: only send down required information
+
+  app.get('/api/jobs', function(req, res) {
+    Job.find({}, function(err, jobs) {
+      if (err)
+        res.status(400).send("no jobs to be found")
+      res.send(jobs)
+    })
+  })
+
+  //require Company??
+  app.get('/api/posted_jobs', requireLogin, function(req, res) {
+    Company.find({ owner: req.user.id }, function(err, company) {
+      if (err)
+        res.status(400).send("no jobs here")
+      Job.find({ company: company[0]._id }, function(err, jobs) {
+        if (err)
+          res.status(400).send("no jobs here")
+        res.send(jobs)
+      })
+    })
+  })
+
+  app.get('/api/companies', requireLogin, function(req, res) {
+    Company.find({ owner: req.user.id }, function(err, companies) {
+      if (err)
+        return res.status(400).send("no companies here")
+
+      res.send(companies)
+    })
+  })
+
   app.post('/api/company/new', requireLogin, function (req, res) {
     // ASKTEO: server-side validation or db enough for now?
     console.log("im over here")
@@ -39,7 +71,8 @@ var apiRoutes = function(app) {
         title: body.title,
         description: body.description,
         link: body.link,
-        jobType: { name: body.jobType },
+        // jobType: { name: body.jobType },
+        jobType: { name: 'Technical' },
         company: company[0].id
       })
 

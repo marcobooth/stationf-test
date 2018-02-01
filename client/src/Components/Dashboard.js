@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
-import NewCompany from './NewCompany'
 import { Link } from 'react-router-dom'
+import Companies from './Companies'
+import PostedJobs from './PostedJobs'
+
 
 class Dashboard extends Component {
   render() {
@@ -8,6 +10,9 @@ class Dashboard extends Component {
       <div>
         {/* Sidebar of options: Company/Jobs/Notifications */}
         <Link to="/dashboard/company/new">Create a new company</Link>
+        <Companies/>
+        <Link to="/dashboard/job/new">Create a new job</Link>
+        <PostedJobs />
       </div>
     )
   }

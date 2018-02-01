@@ -5,14 +5,12 @@ import { connect } from 'react-redux'
 import * as actions from '../actions'
 import Dashboard from './Dashboard'
 import NewCompany from './NewCompany'
-
-const Landing = () => <h2>Landing</h2>
+import NewJob from './NewJob'
+import Landing from './Landing'
 
 class App extends Component {
   componentDidMount() {
-    // console.log("in this function")
     this.props.fetchUser()
-    this.props.something()
   }
 
   render() {
@@ -24,6 +22,7 @@ class App extends Component {
             <Route exact path="/" component={Landing} />
             <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/dashboard/company/new" component={NewCompany} />
+            <Route exact path="/dashboard/job/new" component={NewJob} />
           </div>
         </BrowserRouter>
       </div>
