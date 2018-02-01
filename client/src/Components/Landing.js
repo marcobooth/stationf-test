@@ -13,14 +13,13 @@ class Landing extends Component {
 
     return this.props.jobs.map(function(job) {
       return (
-        <div className="four wide column">
+        <div key={job._id} className="four wide column">
           <div className="ui card">
             <div className="content">
               <div className="header">{job.title}</div>
               <div className="meta">2 days ago</div>
               <div className="description">
                 <p>{job.description}</p>
-                <p>Many people also have their own barometers for what makes a cute dog.</p>
               </div>
             </div>
             <div className="ui bottom attached button">

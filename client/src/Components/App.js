@@ -20,10 +20,6 @@ class App extends Component {
             <Route exact path="/" component={Landing} />
             <Route exact path="/dashboard" render={() => <Redirect to="/dashboard/company"/>}/>
             <Route path="/dashboard" component={Dashboard}/>
-            {/* <Route exact path="/dashboard/company" component={Company} />
-            <Route exact path="/dashboard/company/new" component={NewCompany} />
-            <Route exact path="/dashboard/jobs" component={PostedJobs} />
-            <Route exact path="/dashboard/job/new" component={NewJob} /> */}
           </div>
         </BrowserRouter>
       </div>
