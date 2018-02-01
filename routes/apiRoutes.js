@@ -5,6 +5,7 @@ var requireLogin = require('../middlewares/requireLogin')
 var apiRoutes = function(app) {
   app.post('/api/company/new', requireLogin, function (req, res) {
     // ASKTEO: server-side validation or db enough for now?
+    console.log("im over here")
     var { body } = req
     var newCompany = new Company({
       name: body.name,
@@ -15,11 +16,14 @@ var apiRoutes = function(app) {
 
     newCompany.save((err, company) => {
       console.log("error", err);
-      if (err)
+      // ASKTEO: not great error responses
+      // TODO: Add in proper error message
+      if (err) {
         return res.status(400).send("oh no");
-
+      }
       console.log("company", company);
       res.send(company)
+      // res.redirect('/')
     })
   })
 

@@ -7,7 +7,7 @@ class Header extends Component {
     if (this.props.auth) {
       return (
         <div className="right menu">
-          <Link to="dashboard" className="item">Dashboard</Link>
+          <Link to="/dashboard" className="item">Dashboard</Link>
           <a href="/api/logout" className="ui item">Logout</a>
         </div>
       )
@@ -34,7 +34,7 @@ class Header extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log("state.auth", state.auth)
+  // console.log("state.auth", state.auth)
   return { auth: state.auth }
 }
 
