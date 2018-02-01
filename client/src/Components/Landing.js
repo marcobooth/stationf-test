@@ -13,18 +13,20 @@ class Landing extends Component {
 
     return this.props.jobs.map(function(job) {
       return (
-        <div className="ui card">
-          <div className="content">
-            <div className="header">{job.title}</div>
-            <div className="meta">2 days ago</div>
-            <div className="description">
-              <p>{job.description}</p>
-              <p>Many people also have their own barometers for what makes a cute dog.</p>
+        <div class="four wide column">
+          <div className="ui card">
+            <div className="content">
+              <div className="header">{job.title}</div>
+              <div className="meta">2 days ago</div>
+              <div className="description">
+                <p>{job.description}</p>
+                <p>Many people also have their own barometers for what makes a cute dog.</p>
+              </div>
             </div>
-          </div>
-          <div className="ui bottom attached button">
-            <i className="add icon"></i>
-            Apply for this job
+            <div className="ui bottom attached button">
+              <i className="add icon"></i>
+              Apply for this job
+            </div>
           </div>
         </div>
       )
@@ -34,8 +36,7 @@ class Landing extends Component {
   render() {
     console.log(this.props.jobs)
     return (
-      <div>
-        <div>this is the landing page</div>
+      <div className="ui grid">
         { this.renderJobs() }
       </div>
     )
