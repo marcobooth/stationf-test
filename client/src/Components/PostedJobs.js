@@ -50,7 +50,7 @@ class PostedJobs extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="thirteen wide column">
         <h2 className="ui center aligned icon header">
           <i className="circular users icon"></i>
           Posted Jobs
