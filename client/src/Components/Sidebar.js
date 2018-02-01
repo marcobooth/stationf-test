@@ -6,12 +6,12 @@ class Sidebar extends Component {
     return (
       <div>
         <div className="ui vertical menu">
-          <a className="item" onClick={() => this.props.changeMenuItem(0)}>
+          <Link to="/dashboard/company" className="item">
             Company
-          </a>
-          <a className="item" onClick={() => this.props.changeMenuItem(1)}>
+          </Link>
+          <Link to="/dashboard/jobs" className="item">
             Jobs
-          </a>
+          </Link>
           {/* <Link to="/dashboard/jobs" className="item">
             Jobs
           </Link> */}

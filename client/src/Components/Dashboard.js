@@ -3,31 +3,27 @@ import Company from './Company'
 import PostedJobs from './PostedJobs'
 import Sidebar from './Sidebar'
 import { Route } from 'react-router-dom'
+import NewCompany from './NewCompany'
+import NewJob from './NewJob'
 
 class Dashboard extends Component {
   constructor(props) {
     super(props)
-
-    this.state = {
-      menuItem: 0
-    }
   }
 
-  changeMenuItem(item) {
-    this.setState({
-      menuItem: item
-    })
-  }
 
   render() {
     console.log("dashboard props: ", this.props)
     return(
       <div>
         <div className="left floated three wide column">
-          <Sidebar changeMenuItem={this.changeMenuItem.bind(this)} />
+          <Sidebar />
         </div>
         <div className="thirteen wide column">
-          { this.state.menuItem === 0 ? <Company /> : <PostedJobs />}
+          <Route exact path="/dashboard/company" component={Company}/>
+          <Route path="/dashboard/company/new" component={NewCompany}/>
+          <Route exact path="/dashboard/jobs" component={PostedJobs}/>
+          <Route path="/dashboard/job/new" component={NewJob}/>
         </div>
       </div>
     )

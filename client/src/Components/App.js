@@ -1,13 +1,9 @@
 import React, { Component } from 'react'
 import Header from './Header'
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux'
 import * as actions from '../actions'
 import Dashboard from './Dashboard'
-import Company from './Company'
-import NewCompany from './NewCompany'
-import PostedJobs from './PostedJobs'
-import NewJob from './NewJob'
 import Landing from './Landing'
 
 class App extends Component {
@@ -22,6 +18,7 @@ class App extends Component {
           <div>
             <Header/>
             <Route exact path="/" component={Landing} />
+            <Route exact path="/dashboard" render={() => <Redirect to="/dashboard/company"/>}/>
             <Route path="/dashboard" component={Dashboard}/>
             {/* <Route exact path="/dashboard/company" component={Company} />
             <Route exact path="/dashboard/company/new" component={NewCompany} />
@@ -33,6 +30,8 @@ class App extends Component {
     )
   }
 }
+
+export default connect(null, actions)(App);
 
 // const PrivateRoute = ({ component: Component, ...rest }) => (
 //   <Route {...rest} render={props => (
@@ -46,5 +45,3 @@ class App extends Component {
 //     )
 //   )}/>
 // )
-
-export default connect(null, actions)(App);
