@@ -52,7 +52,7 @@ class PostedJobs extends React.Component {
 
   render() {
     return (
-      <div className="thirteen wide column">
+      <div>
         <h2 className="ui center aligned icon header">
           Posted Jobs
         </h2>

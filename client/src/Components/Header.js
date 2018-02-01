@@ -7,15 +7,15 @@ class Header extends Component {
     if (this.props.auth) {
       return (
         <div className="right menu">
-          <div className="item"><Link to="/dashboard">Dashboard</Link></div>
-          <div className="item"><a href="/auth/logout">Logout</a></div>
+          <Link className="item" to="/dashboard">Dashboard</Link>
+          <a className="item" href="/auth/logout">Logout</a>
         </div>
       )
     } else {
       return (
         <div className="right menu">
-          <div className="item"><a href="/auth/google" className="ui button">Log In</a></div>
-          <div className="item"><a href="/auth/google" className="ui button">Sign Up</a></div>
+          <a className="item" href="/auth/google">Log in</a>
+          <a className="item" href="/auth/google">Sign Up</a>
         </div>
       )
     }
@@ -26,8 +26,8 @@ class Header extends Component {
       <div className="ui large top menu">
         <div className="ui container">
           <Link to="" className="active item">Home</Link>
+          <a className="item">Companies</a>
           <a className="item">About</a>
-          <a className="item">Something Else</a>
           {this.loggedIn()}
         </div>
       </div>

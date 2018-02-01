@@ -16,9 +16,11 @@ class App extends Component {
         <BrowserRouter>
           <div>
             <Header/>
-            <Route exact path="/" component={Landing} />
-            <Route exact path="/dashboard" render={() => <Redirect to="/dashboard/company"/>}/>
-            <Route path="/dashboard" component={Dashboard}/>
+            <div className="ui container">
+              <Route exact path="/" component={Landing} />
+              <Route exact path="/dashboard" render={() => <Redirect to="/dashboard/company"/>}/>
+              <Route path="/dashboard" component={Dashboard}/>
+            </div>
           </div>
         </BrowserRouter>
     )

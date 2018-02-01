@@ -8,7 +8,7 @@ The site will eventually allow job-hunters to get notified when certain types of
 
 ## Getting Started
 
-This repository actually consists of two applications: a server and a client. The client application can be found in the /client directory. The run server script (below) actually starts two servers - one for the server and one for the client. In production, only one server will be used to serve both applications. For development, it's much faster to use two (to avoid having to constantly build the client).
+This repository actually consists of two applications: a server and a client. The client application can be found in the `/client` directory. The run script (see below) actually starts two servers - one for the backend and one for the fronted. In production, only one server will be used to serve both applications. For development, it's much faster to use two to avoid having to constantly build the client.
 
 ### Prerequisites
 
