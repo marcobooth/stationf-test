@@ -22,10 +22,10 @@ class Landing extends Component {
                 <p>{job.description}</p>
               </div>
             </div>
-            <div className="ui bottom attached button">
-              <i className="add icon"></i>
-              Apply for this job
-            </div>
+            <a href={job.link} target="_blank" rel='noopener noreferrer' className="ui bottom attached button">
+              <span>Apply for this job</span>
+              {/* <i className="external icon"></i> */}
+            </a>
           </div>
         </div>
       )
@@ -33,9 +33,8 @@ class Landing extends Component {
   }
 
   render() {
-    console.log(this.props.jobs)
     return (
-      <div className="ui grid">
+      <div className="ui container grid">
         { this.renderJobs() }
       </div>
     )

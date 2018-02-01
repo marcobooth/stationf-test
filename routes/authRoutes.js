@@ -7,16 +7,18 @@ var authRoutes = function(app) {
   app.get('/auth/google/callback',
     passport.authenticate('google', { failureRedirect: '/login' }),
     function(req, res) {
-      // Successful authentication, redirect home.
-      console.log("everything is fine");
       res.redirect('/');
     }
   )
 
-  app.get('/api/logout', function(req, res){
+  app.get('/auth/logout', function(req, res){
     req.logout();
     res.redirect('/');
-  });
-};
+  })
+
+  app.get('/auth/current_user', function(req, res) {
+    res.send(req.user);
+  })
+}
 
 module.exports = authRoutes;

@@ -14,7 +14,6 @@ var companySchema = new Schema({
     type: String,
     required: true
   },
-  // THIS NEEDS TO BE UNIQUE AS WELL
   owner: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',

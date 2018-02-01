@@ -12,7 +12,6 @@ class NewCompany extends Component {
       error: ''
     }
 
-    console.log("starting state: ", this.state)
     this.handleInputChange = this.handleInputChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -21,17 +20,9 @@ class NewCompany extends Component {
     const value = event.target.value;
     const name = event.target.name;
 
-    console.log("name: ", name)
-    console.log("value: ", value)
-
     this.setState({
       [name]: value
     });
-
-    // setTimeout(function (){
-    //   console.log("current state: ", this.state)
-    // }.bind(this), 1000);
-
   }
 
   handleSubmit(event) {
@@ -42,7 +33,6 @@ class NewCompany extends Component {
       description: this.state.description
     })
     .then((response) => {
-      // console.log(response)
       this.props.history.push('/dashboard')
     })
     .catch((error) => {
@@ -67,26 +57,20 @@ class NewCompany extends Component {
   render() {
     return(
       <div>
-        <h4>Create a new company</h4>
+        <h2 className="ui header">Create a new company</h2>
         { this.errorMessage() }
         <form className="ui form" onSubmit={this.handleSubmit}>
           <div className="field">
-            <label>
-              Name:
-              <input name="name" type="text" value={this.state.name} onChange={this.handleInputChange} />
-            </label>
+            <label>Name:</label>
+            <input name="name" type="text" value={this.state.name} onChange={this.handleInputChange} />
           </div>
-          <div>
-            <label>
-              Website:
-              <input name="website" type="text" value={this.state.website} onChange={this.handleInputChange} />
-            </label>
+          <div className="field">
+            <label>Website:</label>
+            <input name="website" type="text" value={this.state.website} onChange={this.handleInputChange} />
           </div>
-          <div>
-            <label>
-              Description:
-              <input name="description" type="text" value={this.state.description} onChange={this.handleInputChange} />
-            </label>
+          <div className="field">
+            <label>Description:</label>
+            <input name="description" type="text" value={this.state.description} onChange={this.handleInputChange} />
           </div>
           <button className="ui button" type="submit">Submit</button>
         </form>

@@ -8,7 +8,7 @@ import NewJob from './NewJob'
 
 function Dashboard(props) {
   return(
-    <div>
+    <div className="ui grid">
       <div className="left floated three wide column">
         <Sidebar />
       </div>
@@ -18,6 +18,7 @@ function Dashboard(props) {
         <Route exact path="/dashboard/jobs" component={PostedJobs}/>
         <Route exact path="/dashboard/job/new" component={NewJob}/>
       </div>
+
     </div>
   )
 }

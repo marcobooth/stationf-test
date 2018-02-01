@@ -32,7 +32,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 require('./routes/authRoutes')(app)
-require('./routes/apiRoutes')(app)
+require('./routes/companyRoutes')(app)
+require('./routes/jobRoutes')(app)
 
 app.get('/', function (req, res) {
   console.log("req user: ", req.user);

@@ -1,10 +1,14 @@
 # StationF Jobs - created for an interview with CreditMint
 
-StationF is a startup campus in Paris that houses around 1000 companies. The purpose of the site is to let companies working from the campus to post links to their current job openings and to allow job-hunters to find any jobs that are available there.
+This is a demo web application created for an interview with CreditMint.
+
+The purpose of the site is to let companies working from the StationF campus in Paris to post links to their current job openings and to allow job-hunters to find any jobs that are available there.
+
+The site will eventually allow job-hunters to get notified when certain types of jobs are posted or when companies they "follow" post jobs
 
 ## Getting Started
 
-This repository actually consists of two applications: a server and a client. The client application can be found in the /client directory. The script that starts the server actually runs two scripts - one for the server and one for the client. In production, only one server will be used to serve both applications. For development, it's much faster to use two although this can seem slightly over the top.
+This repository actually consists of two applications: a server and a client. The client application can be found in the /client directory. The run server script (below) actually starts two servers - one for the server and one for the client. In production, only one server will be used to serve both applications. For development, it's much faster to use two (to avoid having to constantly build the client).
 
 ### Prerequisites
 
@@ -28,8 +32,6 @@ Step 2:
 ```
 ./scripts/run_server.sh
 ```
-
-End with an example of getting some data out of the system or using it for a little demo
 
 ## Deployment
 

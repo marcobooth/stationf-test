@@ -8,7 +8,7 @@ class Header extends Component {
       return (
         <div className="right menu">
           <div className="item"><Link to="/dashboard">Dashboard</Link></div>
-          <div className="item"><a href="/api/logout">Logout</a></div>
+          <div className="item"><a href="/auth/logout">Logout</a></div>
         </div>
       )
     } else {

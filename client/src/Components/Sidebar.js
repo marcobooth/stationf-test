@@ -7,16 +7,13 @@ class Sidebar extends Component {
       <div>
         <div className="ui vertical menu">
           <Link to="/dashboard/company" className="item">
-            Company
+            Company<i className="building icon"></i>
           </Link>
           <Link to="/dashboard/jobs" className="item">
-            Jobs
+            Posted Jobs<i className="users icon"></i>
           </Link>
-          {/* <Link to="/dashboard/jobs" className="item">
-            Jobs
-          </Link> */}
           <a className="item">
-            Notifications
+            Notifications<i className="cloud icon"></i>
           </a>
         </div>
       </div>

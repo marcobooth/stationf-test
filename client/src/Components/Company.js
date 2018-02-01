@@ -32,8 +32,7 @@ class Company extends React.Component {
   render() {
     return (
       <div>
-        <h2 className="ui center aligned icon header">
-          <i className="circular building icon"></i>
+        <h2 className="ui center aligned header">
           Company
         </h2>
         { this.renderCompany() }

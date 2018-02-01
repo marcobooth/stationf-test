@@ -2,9 +2,7 @@ var Company = require('mongoose').model('Company')
 var Job = require('mongoose').model('Job')
 var requireLogin = require('../middlewares/requireLogin')
 
-var apiRoutes = function(app) {
-  //TODO: only send down required information
-
+var jobRoutes = function(app) {
   app.get('/api/jobs', function(req, res) {
     Job.find({}, function(err, jobs) {
       if (err)
@@ -14,19 +12,18 @@ var apiRoutes = function(app) {
     })
   })
 
-  //require Company??
   app.get('/api/posted_jobs', requireLogin, function(req, res) {
+    //TODO: Validate they own a company
     Company.findOne({ owner: req.user.id }, function(err, company) {
       if (err)
         res.status(400).send("no jobs here")
       if (company === null)
         return res.send(null)
-      console.log("company: ", company)
+
       Job.find({ company: company._id }, function(err, jobs) {
         if (err)
           res.status(400).send("no jobs here")
 
-        console.log("jobs: ", jobs)
         res.send(jobs)
       })
     })
@@ -57,42 +54,6 @@ var apiRoutes = function(app) {
       })
     })
   })
-
-  app.get('/api/company', requireLogin, function(req, res) {
-    Company.findOne({ owner: req.user.id }, function(err, company) {
-      if (err) {
-        console.log("error: ", err)
-        return res.status(400).send("no companies here")
-      }
-
-      res.send(company)
-    })
-  })
-
-  app.post('/api/company/new', requireLogin, function (req, res) {
-    // ASKTEO: server-side validation or db enough for now?
-    var { body } = req
-    var newCompany = new Company({
-      name: body.name,
-      description: body.description,
-      website: body.website,
-      owner: req.user.id
-    })
-
-    newCompany.save((err, company) => {
-      console.log("error", err);
-      // ASKTEO: not great error responses
-      // TODO: Add in proper error message
-      if (err) {
-        return res.status(400).send("oh no");
-      }
-      res.send(company)
-    })
-  })
-
-  app.get('/api/current_user', function(req, res) {
-    res.send(req.user);
-  })
 }
 
-module.exports = apiRoutes
+module.exports = jobRoutes

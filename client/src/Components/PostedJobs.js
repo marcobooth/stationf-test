@@ -2,9 +2,11 @@ import React from 'react'
 import * as actions from '../actions'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+
 class PostedJobs extends React.Component {
   componentDidMount() {
     this.props.fetchPostedJobs()
+    this.props.fetchCompany()
   }
 
   renderJobsTableRows() {
@@ -52,7 +54,6 @@ class PostedJobs extends React.Component {
     return (
       <div className="thirteen wide column">
         <h2 className="ui center aligned icon header">
-          <i className="circular users icon"></i>
           Posted Jobs
         </h2>
         { this.renderJobsTable() }
