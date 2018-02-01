@@ -47,6 +47,8 @@ class NewJob extends Component {
       this.props.history.push('/dashboard')
     })
     .catch((error) => {
+      console.log("error ", error)
+      console.log("error.response ", error.response)
       this.setState({
         error: error.response.data
       })
@@ -88,7 +90,6 @@ class NewJob extends Component {
               Description:
               <input name="description" type="text" value={this.state.description} onChange={this.handleInputChange} />
             </label>
-            <label>Job Type</label>
           </div>
           <button className="ui button" type="submit">Submit</button>
         </form>

@@ -9,53 +9,26 @@ var apiRoutes = function(app) {
     Job.find({}, function(err, jobs) {
       if (err)
         res.status(400).send("no jobs to be found")
+
       res.send(jobs)
     })
   })
 
   //require Company??
   app.get('/api/posted_jobs', requireLogin, function(req, res) {
-    Company.find({ owner: req.user.id }, function(err, company) {
+    Company.findOne({ owner: req.user.id }, function(err, company) {
       if (err)
         res.status(400).send("no jobs here")
-      Job.find({ company: company[0]._id }, function(err, jobs) {
+      if (company === null)
+        return res.send(null)
+      console.log("company: ", company)
+      Job.find({ company: company._id }, function(err, jobs) {
         if (err)
           res.status(400).send("no jobs here")
+
+        console.log("jobs: ", jobs)
         res.send(jobs)
       })
-    })
-  })
-
-  app.get('/api/companies', requireLogin, function(req, res) {
-    Company.find({ owner: req.user.id }, function(err, companies) {
-      if (err)
-        return res.status(400).send("no companies here")
-
-      res.send(companies)
-    })
-  })
-
-  app.post('/api/company/new', requireLogin, function (req, res) {
-    // ASKTEO: server-side validation or db enough for now?
-    console.log("im over here")
-    var { body } = req
-    var newCompany = new Company({
-      name: body.name,
-      description: body.description,
-      website: body.website,
-      owner: req.user.id
-    })
-
-    newCompany.save((err, company) => {
-      console.log("error", err);
-      // ASKTEO: not great error responses
-      // TODO: Add in proper error message
-      if (err) {
-        return res.status(400).send("oh no");
-      }
-      console.log("company", company);
-      res.send(company)
-      // res.redirect('/')
     })
   })
 
@@ -78,10 +51,42 @@ var apiRoutes = function(app) {
 
       newJob.save(function(err, job) {
         if (err)
-          return res.status(400).send(err)
+          return res.status(400).send("that did not work")
 
         res.send(job)
       })
+    })
+  })
+
+  app.get('/api/company', requireLogin, function(req, res) {
+    Company.findOne({ owner: req.user.id }, function(err, company) {
+      if (err) {
+        console.log("error: ", err)
+        return res.status(400).send("no companies here")
+      }
+
+      res.send(company)
+    })
+  })
+
+  app.post('/api/company/new', requireLogin, function (req, res) {
+    // ASKTEO: server-side validation or db enough for now?
+    var { body } = req
+    var newCompany = new Company({
+      name: body.name,
+      description: body.description,
+      website: body.website,
+      owner: req.user.id
+    })
+
+    newCompany.save((err, company) => {
+      console.log("error", err);
+      // ASKTEO: not great error responses
+      // TODO: Add in proper error message
+      if (err) {
+        return res.status(400).send("oh no");
+      }
+      res.send(company)
     })
   })
 
